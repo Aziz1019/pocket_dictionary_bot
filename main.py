@@ -41,9 +41,9 @@ async def tarjimon(message: types.Message):
 
         lookup = get_definitions(word_id)
         if lookup:
-            await message.reply(f"Word: {word_id} \nDefinitions:\n{lookup['definitions']}")
+            await message.answer(f"Word: {word_id} \nDefinitions:\n{lookup['definitions']}")
             if lookup.get('audio'):
-                await message.reply_voice(lookup['audio'])
+                await message.answer_audio(lookup['audio'])
         else:
             await message.reply("Bunday so'z topilmadi")
 
