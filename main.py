@@ -10,7 +10,6 @@ translator = Translator()
 
 API_TOKEN = '5399942772:AAEWUxt6j1YidYHi0RqfhFHPKjXfP7JO3eY'
 
-
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 
@@ -19,12 +18,20 @@ bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
 
-@dp.message_handler(commands=['start', 'help'])
+@dp.message_handler(commands='start')
 async def send_welcome(message: types.Message):
     """
-    This handler will be called when user sends `/start` or `/help` command
+    This handler will be called when user sends `/start` command
     """
-    await message.reply("Hi!\nI'm EchoBot!\nPowered by aiogram.")
+    await message.reply("Assalomu aleykum, Welcome to Pocket | Dictionary!.😉")
+
+
+@dp.message_handler(commands='help')
+async def send_welcome(message: types.Message):
+    """
+    This handler will be called when user sends `/help` command
+    """
+    await message.reply("To start enter any word for its definitions or a sentence to translate to uzb.")
 
 
 @dp.message_handler()
