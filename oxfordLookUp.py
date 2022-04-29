@@ -19,8 +19,12 @@ def get_definitions(word_id):
     output = {}
     senses = res['results'][0]['lexicalEntries'][0]['entries'][0]['senses']
     definitions = []
-    for sense in senses:
-        definitions.append(f"👉 {sense['definitions'][0]}")
+    if len(res['results']) > 1:
+        for i in range(len(res['results'])):
+            definitions.append(f"👉 {res['results'][i]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'][0]}")
+    else:
+        for sense in senses:
+            definitions.append(f"👉 {sense['definitions'][0]}")
     output['definitions'] = "\n".join(definitions)
     if res['results'][0]['lexicalEntries'][0]['entries'][0]['pronunciations'][0].get('audioFile'):
         output['audio'] = res['results'][0]['lexicalEntries'][0]['entries'][0]['pronunciations'][0]['audioFile']

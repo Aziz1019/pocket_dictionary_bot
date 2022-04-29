@@ -81,8 +81,12 @@ print(r.status_code)
 
 res = r.json()
 
-print(res['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'][0])
-print(res['results'][1]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'][0])
-print(res['results'][2]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'][0])
+print(len(res['results']))
+for i in range(len(res['results'])):
+    print(res['results'][i]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'][0])
+
+# print(res['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'][0])
+# print(res['results'][1]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'][0])
+# print(res['results'][2]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'][0])
 
 print(res['results'][0]['lexicalEntries'][0]['entries'][0]['pronunciations'][0]['audioFile'])
